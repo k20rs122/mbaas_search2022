@@ -34,6 +34,19 @@
                 })
         }
 
+        function searchLevelLT() {
+            let level = parseInt($("#level").val());
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .lessThan("level", level)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
+        
+
         function searchName() {
             let name = $("#name").val();
             let TestDataClass = ncmb.DataStore(db);
