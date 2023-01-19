@@ -101,7 +101,7 @@
         }
 
         function searchDefLT() {
-            let atk = parseInt($("#def").val());
+            let def = parseInt($("#def").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
                 .lessThan("def", def)
@@ -112,7 +112,7 @@
         }
 
         function searchDefGT() {
-            let atk = parseInt($("#def").val());
+            let def = parseInt($("#def").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
                 .greaterThan("def", def)
@@ -134,7 +134,7 @@
         }
 
         function searchMdfLT() {
-            let atk = parseInt($("#mdf").val());
+            let mdf = parseInt($("#mdf").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
                 .lessThan("mdf", mdf)
@@ -145,7 +145,7 @@
         }
 
         function searchMdfGT() {
-            let atk = parseInt($("#mdf").val());
+            let mdf = parseInt($("#mdf").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
                 .greaterThan("mdf", mdf)
@@ -226,30 +226,30 @@
     </div>
 
     <div>
-        <label for="mdf">def:</label>
+        <label for="mdf">mdf:</label>
         <input id="mdf" type="number" placeholder="monster mdf">
     </div>
     
     <div id="button">
         <button class="btn" onclick="fetchAll()">Fetch All</button>
-        <button class="btn" onclick="searchName()">Name</button>
-        <button class="btn" onclick="searchRank()">Rank</button>
+        <button class="btn1" onclick="searchName()">Name</button>
+        <button class="btn2" onclick="searchRank()">Rank</button>
         <br>
         <button class="btn" onclick="searchHpLT()">hp &lt</button>
-        <button class="btn" onclick="searchHp()">hp</button>
-        <button class="btn" onclick="searchHpGT()">hp &gt</button>
+        <button class="btn1" onclick="searchHp()">hp</button>
+        <button class="btn2" onclick="searchHpGT()">hp &gt</button>
         <br>
         <button class="btn" onclick="searchAtkLT()">atk &lt</button>
-        <button class="btn" onclick="searchAtk()">atk</button>
-        <button class="btn" onclick="searchAtkGT()">atk &gt</button>
+        <button class="btn1" onclick="searchAtk()">atk</button>
+        <button class="btn2" onclick="searchAtkGT()">atk &gt</button>
         <br>
         <button class="btn" onclick="searcDefLT()">def &lt</button>
-        <button class="btn" onclick="searchDef()">def</button>
-        <button class="btn" onclick="searchDefGT()">def &gt</button>
+        <button class="btn1" onclick="searchDef()">def</button>
+        <button class="btn2" onclick="searchDefGT()">def &gt</button>
         <br>
         <button class="btn" onclick="searchMdfLT()">mdf &lt</button>
-        <button class="btn" onclick="searchMdf()">mdf</button>
-        <button class="btn" onclick="searchMdfGT()">mdf &gt</button>
+        <button class="btn1" onclick="searchMdf()">mdf</button>
+        <button class="btn2" onclick="searchMdfGT()">mdf &gt</button>
     </div>
     <div id="message">message area</div>
 </body>
