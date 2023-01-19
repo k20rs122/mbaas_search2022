@@ -67,6 +67,17 @@
                 })
         }
 
+        function searchRank() {
+            let rank = $("#rank").val();
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .equalTo("rank", rank)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
         function showResults(results) {
             // テーブルのヘッダを生成
             let msg = "<table><tr><th>name</th><th>Rank</th><th>HP</th><th>ATK</th><th>DEF</th><th>MDF</th></tr>";
@@ -94,13 +105,21 @@
         <label for="name">name:</label>
         <input id="name" type="text" placeholder="monster name">
     </div>
+
+    <div>
+        <label for="rank">rank:</label>
+        <input id="rank" type="text" placeholder="monster rank">
+    </div>
+
     <div>
         <label for="hp">hp:</label>
         <input id="hp" type="number" placeholder="monster hp">
     </div>
+    
     <div id="button">
         <button class="btn" onclick="fetchAll()">Fetch All</button>
         <button class="btn" onclick="searchName()">Name</button>
+        <button class="btn" onclick="searchRank()">Rank</button>
         <br>
         <button class="btn" onclick="searchHpLT()">hp &lt</button>
         <button class="btn" onclick="searchHp()">hp</button>
