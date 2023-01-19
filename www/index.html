@@ -122,6 +122,39 @@
                 })
         }
 
+        function searchMdf() {
+            let mdf = parseInt($("#mdf").val());
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .equalTo("mdf", mdf)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
+        function searchMdfLT() {
+            let atk = parseInt($("#mdf").val());
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .lessThan("mdf", mdf)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
+        function searchMdfGT() {
+            let atk = parseInt($("#mdf").val());
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .greaterThan("mdf", mdf)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
         function searchName() {
             let name = $("#name").val();
             let TestDataClass = ncmb.DataStore(db);
@@ -191,6 +224,11 @@
         <label for="def">def:</label>
         <input id="def" type="number" placeholder="monster def">
     </div>
+
+    <div>
+        <label for="mdf">def:</label>
+        <input id="mdf" type="number" placeholder="monster mdf">
+    </div>
     
     <div id="button">
         <button class="btn" onclick="fetchAll()">Fetch All</button>
@@ -205,9 +243,13 @@
         <button class="btn" onclick="searchAtk()">atk</button>
         <button class="btn" onclick="searchAtkGT()">atk &gt</button>
         <br>
-        <button class="btn" onclick="searchDefLT()">def &lt</button>
+        <button class="btn" onclick="searcDefLT()">def &lt</button>
         <button class="btn" onclick="searchDef()">def</button>
         <button class="btn" onclick="searchDefGT()">def &gt</button>
+        <br>
+        <button class="btn" onclick="searchMdfLT()">mdf &lt</button>
+        <button class="btn" onclick="searchMdf()">mdf</button>
+        <button class="btn" onclick="searchMdfGT()">mdf &gt</button>
     </div>
     <div id="message">message area</div>
 </body>
