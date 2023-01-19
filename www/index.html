@@ -13,7 +13,7 @@
         // NCMB アクセスの準備
         let ncmb = new NCMB(appKey, clientKey);
         // 本アプリで使うクラスの指定。const は定数の宣言。変更できない変数と思えば良い。
-        const db = "m";
+        const db = "character";
 
         function fetchAll() {
             let TestDataClass = ncmb.DataStore(db);
@@ -23,33 +23,33 @@
                 })
         }
 
-        function searchRank() {
-            let rank = parseInt($("#rank").val());
+        function searchHp() {
+            let hp = parseInt($("#hp").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
-                .equalTo("rank", rank)
+                .equalTo("hp", hp)
                 .fetchAll()
                 .then(function(results) {
                     showResults(results);
                 })
         }
 
-        function searchRankLT() {
-            let rank = parseInt($("#rank").val());
+        function searchHpLT() {
+            let hp = parseInt($("#hp").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
-                .lessThan("rank", rank)
+                .lessThan("hp", hp)
                 .fetchAll()
                 .then(function(results) {
                     showResults(results);
                 })
         }
 
-        function searchRankGT() {
-            let rank = parseInt($("#rank").val(), 10);
+        function searchHpGT() {
+            let hp = parseInt($("#hp").val());
             let TestDataClass = ncmb.DataStore(db);
             TestDataClass
-                .greaterThan("rank", rank)
+                .greaterThan("hp", hp)
                 .fetchAll()
                 .then(function(results) {
                     showResults(results);
@@ -69,14 +69,16 @@
 
         function showResults(results) {
             // テーブルのヘッダを生成
-            let msg = "<table><tr><th>name</th><th>Rank</th><th>atk</th><th>def</th></tr>";
+            let msg = "<table><tr><th>name</th><th>Rank</th><th>HP</th><th>ATK</th><th>DEF</th><th>MDF</th></tr>";
             for (let i = 0; i < results.length; i++) {
                 // 各データを収めた表の列を生成
                 msg += "<tr>";
                 msg += "<td>" + results[i].name + "</td>";
                 msg += "<td class='num'>" + results[i].rank + "</td>";
+                msg += "<td class='num'>" + results[i].hp + "</td>";
                 msg += "<td class='num'>" + results[i].atk + "</td>";
                 msg += "<td class='num'>" + results[i].def + "</td>";
+                msg += "<td class='num'>" + results[i].mdf + "</td>";
                 msg += "</tr>";
             }
             // テーブルのテイラを生成
@@ -93,16 +95,16 @@
         <input id="name" type="text" placeholder="monster name">
     </div>
     <div>
-        <label for="rank">rank:</label>
-        <input id="rank" type="number" placeholder="monster rank">
+        <label for="hp">hp:</label>
+        <input id="hp" type="number" placeholder="monster hp">
     </div>
     <div id="button">
         <button class="btn" onclick="fetchAll()">Fetch All</button>
         <button class="btn" onclick="searchName()">Name</button>
         <br>
-        <button class="btn" onclick="searchLevelLT()">rank &lt</button>
-        <button class="btn" onclick="searchLevel()">rank</button>
-        <button class="btn" onclick="searchLevelGT()">rank &gt</button>
+        <button class="btn" onclick="searchHpLT()">hp &lt</button>
+        <button class="btn" onclick="searchHp()">hp</button>
+        <button class="btn" onclick="searchHpGT()">hp &gt</button>
     </div>
     <div id="message">message area</div>
 </body>
