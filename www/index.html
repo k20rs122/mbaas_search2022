@@ -56,6 +56,39 @@
                 })
         }
 
+        function searchAtk() {
+            let atk = parseInt($("#atk").val());
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .equalTo("atk", atk)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
+        function searchAtkLT() {
+            let atk = parseInt($("#atk").val());
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .lessThan("atk", atk)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
+        function searchAtkGT() {
+            let atk = parseInt($("#atk").val());
+            let TestDataClass = ncmb.DataStore(db);
+            TestDataClass
+                .greaterThan("atk", atk)
+                .fetchAll()
+                .then(function(results) {
+                    showResults(results);
+                })
+        }
+
         function searchName() {
             let name = $("#name").val();
             let TestDataClass = ncmb.DataStore(db);
@@ -115,6 +148,11 @@
         <label for="hp">hp:</label>
         <input id="hp" type="number" placeholder="monster hp">
     </div>
+
+    <div>
+        <label for="atk">atk:</label>
+        <input id="atk" type="number" placeholder="monster atk">
+    </div>
     
     <div id="button">
         <button class="btn" onclick="fetchAll()">Fetch All</button>
@@ -124,6 +162,10 @@
         <button class="btn" onclick="searchHpLT()">hp &lt</button>
         <button class="btn" onclick="searchHp()">hp</button>
         <button class="btn" onclick="searchHpGT()">hp &gt</button>
+        <br>
+        <button class="btn" onclick="searchAtkLT()">atk &lt</button>
+        <button class="btn" onclick="searchAtk()">atk</button>
+        <button class="btn" onclick="searchAtkGT()">atk &gt</button>
     </div>
     <div id="message">message area</div>
 </body>
